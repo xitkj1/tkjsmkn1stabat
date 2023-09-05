@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknik Komputer dan Jaringan SMK NEGERI 1 STABAT</title>
+    <link rel="shortcut icon" href="Assets/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/79f2706ee3.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        body {
+            
+             z-index: 1;
+        }
+        header {
+            background-color: #fff;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            position: sticky;
+            top: 0px;
+            z-index: 20;
+        }
+        header .logo {
+            font-size: 25px;
+            text-transform: uppercase;
+            display: flex;
+            font-weight: 900;
+        }
+        .firstname {
+            padding-left: 4px;
+            color: blue;
+        }
+        .lastname {
+            padding-left: 4px;
+        }
+        header nav ul {
+            display: flex;
+        }
+        header nav ul li a {
+            font-size: 18px;
+            display: inline-block;
+            color: #000;
+            padding: 10px 0;
+            margin: 0 20px;
+            text-transform: capitalize;
+            transition: 0.2s;
+            color: #1e59e8;
+            position: relative;
+            font-weight: 700;
+        }
+        header nav ul li a::after {
+            content: "";
+            position: absolute;
+            height: 3px;
+            width: 0;
+            background-color: #1e59e8;
+            left: 0;
+            bottom: -4px;
+            transition: .3s;
+        }
+        header nav ul li a:hover:after 
+        {
+            width: 100%;
+            color: #1e59e8;
+        }
+        .active {
+            color: black;
+        }
+        .active::after {
+            content: "";
+            position: absolute;
+            height: 0px;
+            width: 0;
+            background-color: #1e59e8;
+            left: 0;
+            bottom: -4px;
+            transition: .3s;
+        }
+        .hamburger {
+            cursor: pointer;
+            display: none;
+        }
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: #000;
+        }
+        @media only screen and (max-width: 900px) {
+            header {
+                padding: 0 30px;
+            }
+            .menu2 p {
+                font-size: 10px;
+            }
+        }
+        @media only screen and (max-width: 700px) {
+             .hamburger {
+                display: block;
+             }
+             header nav {
+                position: absolute;
+                width: 100%;
+                left: -100%;
+                top: 70px;
+                width: 100%;
+                background-color: #fff;
+                padding: 30px;
+                transition: 0.3s;
+             }
+             header #nav-check:checked ~ nav {
+                left: 0;
+             }
+             header nav ul {
+                display: block;
+             }
+             header nav ul li a {
+                margin: 5px 0;
+             }
+             .banner h1 {
+                text-align: center;
+             }
+             .banner button {
+                margin-left: -50px;
+             }
+             .menu2  {
+                display: grid;
+                column-gap: 30px;
+             }
+             .menu2 p {
+                font-size: 10px;
+             }
+             .item3 {
+                width: 110px;
+                height: 100px;
+                background-color: white;
+                border-radius: 8px;
+             }
+             .menu2 {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(50px,0.10fr));
+                gap: 20px;
+                justify-content: center;
+            }
+        }
+        .banner {
+            width: 100%;
+            height: 150vh;
+            background-position: center;
+            background-size: cover;
+            background-image: url(Assets/banner.jpg);
+        }
+        .banner h1 {
+            color: rgb(255, 255, 255);
+            font-size: 70px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            text-transform: capitalize;
+            font-family: 'Oleo Script Swash Caps', cursive;
+            justify-content: center;
+            padding-top: 5em;
+            font-weight: 1000;
+        }
+        .banner button {
+            position: relative;
+            top: 2%;
+            left: 44%;
+            transform: translate(50,50);
+            border: none;
+            padding: 9px;
+            border: 2px solid #1e59e8;
+            background-color: transparent;
+            border-radius: 8px;
+        }
+        .banner button a {
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        .banner button:hover {
+            transform: scale(1.1);
+            background-color: #1e59e8;
+            transition: all ease-in-out .3s;
+            border: black;
+        }
+        .banner button a:hover {
+            transform: scale(1.2);
+            background-color: #1e59e8;
+            transition: all ease-in-out .3s;
+            color: black;
+            font-weight: 600;
+        }
+        main {
+             background-color: #1e59e8;
+        }
+        .keahlian {
+            text-align: center;
+            margin: 1em auto;
+            text-transform: capitalize;
+        }
+        .menu2 {
+            display: flex;
+        }
+        .wrapper {
+            width: 80%;
+            margin: 2em auto;
+            justify-content: space-around;
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .item {
+            width: 200px;
+            height: 250px;
+            background-color: #fff;
+            border-radius: 24px;
+            box-shadow: 0 6px 10px 0;
+        }
+        .item i {
+            font-size: 70px;
+            position: relative;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .item p {
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 25px;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .item:hover {
+            transform: scale(1.03);
+            transition: all ease-in-out .3s;
+        }
+        .wrapper2 {
+            display: none;
+            margin: 1em auto;
+        }
+        .wrapper2 .item {
+            margin: 1em auto;
+        }
+        @media screen and (max-width: 100px) {
+            .wrapper {
+                width: 100%;
+            }
+        }
+        @media  screen and (max-width: 900px) {
+            .wrapper {
+                width: 100%;
+            }
+            .item {
+                width: 150px;
+                height: 200px;
+            }
+            .item p {
+                font-size: 20px;
+            }
+        }
+        @media screen and (max-width: 622px) {
+            .wrapper {
+                width: 100%;
+            }
+            .item {
+                padding-left: 1em;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .wrapper {
+                display: none;
+            }
+            .wrapper2 {
+                display: block;
+            }
+            .item {
+                width: 200px;
+                height: 250px;
+            }
+            .foto-kegiatan img {
+                height: 140px !important;
+                width: 140px !important;
+            }
+            .foto-kegiatan {
+                justify-content: center;
+            }
+            footer {
+                display: none;
+            }
+        }
+        br {
+            background-color: #1e59e8;
+        }
+        
+        .kegiatan {
+            margin: 2em auto;
+            text-align: center;
+        }
+        .kegiatan h1 {
+            font-size: 35px;
+            text-transform: capitalize;
+        }
+        .pembungkus {
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            background-color: #fff;
+        }
+        .foto-kegiatan {
+            width: 80%;
+            margin: 0 auto;
+            gap: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .foto-kegiatan2 {
+            display: none;
+        }
+        
+        .foto-kegiatan img {
+            height: 200px;
+            width: 200px;
+            border-radius: 8px;
+        }
+        .foto-kegiatan img:hover {
+            transform: scale(1.02);
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1e59e8;
+            color: #fff !important;
+            position: relative;
+            top: 10%;
+            text-decoration: none;
+        }
+        footer a {
+            text-decoration: none;
+            color: white;
+        }
+        footer .sosmed {
+            font-size: 20px;
+            text-decoration: none;
+        }
+        footer .sosmed:hover {
+            transform: scale(1.02);
+        }
+        footer .copyright {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Assets/favicon.png" style="height: 50px;width: 50px;" alt="">
+            <div class="firstname">tkj</div>
+            <div class="lastname">SKANSA</div>
+        </div>
+        <input type="checkbox" id="nav-check" hidden>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="content.html">Content</a></li>
+            </ul>
+        </nav>
+        <label for="nav-check" class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+    </header>
+    <div class="banner">
+        <h1>welcome to our website</h1>
+        <button type="button">
+            <a href="content.html">ayo eksplore lebih</a>
+        </button>
+        <div></div>
+    </div>
+    <main>
+        <br>
+        <h1 class="keahlian">
+            hal - hal yang kamu pelajari di jurusan ini
+        </h1>
+        <div class="menu2">
+            <div class="wrapper">
+                <a href="#one">
+                    <div class="item">
+                        <i class="fa-solid fa-globe"></i>
+                        <p>jaringan</p>
+                    </div>
+                </a>
+                <a href="#two">
+                    <div class="item">
+                        <i class="fa-solid fa-computer"></i>
+                        <p>komputer</p>
+                    </div>
+                </a>
+                <a href="#three">
+                    <div class="item">
+                        <i class="fa-brands fa-figma"></i>
+                        <p>desain grafis</p>
+                    </div>
+                </a>
+                <a href="#four">
+                    <div class="item">
+                        <i class="fa-brands fa-html5"></i>
+                        <p>website</p>
+                    </div>
+                </a>
+            </div><div class="wrapper2">
+                <a href="#one">
+                    <div class="item">
+                        <i class="fa-solid fa-globe"></i>
+                        <p>jaringan</p>
+                    </div>
+                </a>
+                <div class="item">
+                    <i class="fa-solid fa-computer"></i>
+                    <p>komputer</p>
+                </div>
+                <div class="item">
+                    <i class="fa-brands fa-figma"></i>
+                    <p>desain grafis</p>
+                </div>
+                <div class="item">
+                    <i class="fa-brands fa-html5"></i>
+                    <p>website</p>
+                </div>
+            </div>
+        </div>
+        
+        <br>
+        <div class="pembungkus">
+            <div class="kegiatan">
+                <h1>kegiatan kami</h1>
+            </div>
+            <div class="foto-kegiatan">
+                <section id="one"><img src="Assets/img1.jpg" alt=""></section>
+                <section id="two"><img src="Assets/img2.JPG" alt=""></section>
+                <img src="Assets/img3.jpg" alt="">
+                <img src="Assets/img4.jpg" alt="">
+                <section id="three"><img src="Assets/img5.jpg" alt=""></section>
+                <img src="Assets/img6.jpg" alt="">
+                <img src="Assets/img7.jpg" alt="">
+                <section id="four"><img src="Assets/img8.jpg" alt=""></section>
+                <img src="Assets/img9.jpeg" alt="">
+                <img src="Assets/img10.jpeg" alt="">
+            </div>
+            <footer>
+                <div class="sosmed">
+                    <a href="https://instagram.com/tekomik_skansa?igshid=OGY3MTU3OGY1Mw=="><i class="fa-brands fa-instagram"></i></a>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-telegram"></i>
+                </div>
+                <div class="copyright">copyright 2023 TKJ SKANSA</div>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>

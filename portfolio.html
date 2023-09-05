@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tim Developer Website</title>
+    <link rel="shortcut icon" href="Assets/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/79f2706ee3.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        body {
+             z-index: 1;
+        }
+        header {
+            background-color: #fff;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            position: sticky;
+            top: 0px;
+            z-index: 200;
+        }
+        header .logo {
+            font-size: 25px;
+            text-transform: uppercase;
+            display: flex;
+            font-weight: 900;
+        }
+        .firstname {
+            padding-left: 4px;
+            color: blue;
+        }
+        .lastname {
+            padding-left: 4px;
+        }
+        header nav ul {
+            display: flex;
+        }
+        header nav ul li a {
+            font-size: 18px;
+            display: inline-block;
+            color: #000;
+            padding: 10px 0;
+            margin: 0 20px;
+            text-transform: capitalize;
+            transition: 0.2s;
+            color: blue;
+            position: relative;
+            font-weight: 700;
+        }
+        header nav ul li a::after {
+            content: "";
+            position: absolute;
+            height: 3px;
+            width: 0;
+            background-color: blue;
+            left: 0;
+            bottom: -4px;
+            transition: .3s;
+        }
+        header nav ul li a:hover:after 
+        {
+            width: 100%;
+            color: blue;
+        }
+        .active {
+            color: black;
+        }
+        .active::after {
+            content: "";
+            position: absolute;
+            height: 0px;
+            width: 0;
+            background-color: blue;
+            left: 0;
+            bottom: -4px;
+            transition: .3s;
+        }
+        .hamburger {
+            cursor: pointer;
+            display: none;
+        }
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: #000;
+        }
+        @media only screen and (max-width: 900px) {
+            header {
+                padding: 0 30px;
+            }
+            .menu2 p {
+                font-size: 10px;
+            }
+        }
+        @media only screen and (max-width: 700px) {
+             .hamburger {
+                display: block;
+             }
+             header nav {
+                position: absolute;
+                width: 100%;
+                left: -100%;
+                top: 70px;
+                width: 100%;
+                background-color: #fff;
+                padding: 30px;
+                transition: 0.3s;
+             }
+             header #nav-check:checked ~ nav {
+                left: 0;
+             }
+             header nav ul {
+                display: block;
+             }
+             header nav ul li a {
+                margin: 5px 0;
+             }
+             .banner .wrapper {
+                flex-direction: column-reverse;
+             }
+             .banner {
+                height: max-content;
+             }
+         }
+         .banner {
+            width: 100%;
+            height: 90vh;
+            background-color: #1e59e8;
+         }
+         .wrapper {
+            width: 90%;
+            margin: 1em auto;
+            display: flex;
+            justify-content: space-between;
+         }
+         .wrapper h1 {
+            text-transform: capitalize;
+            font-size: 40px;
+            margin-top: 4em;
+            font-weight: 900;
+         }
+         .wrapper h3 {
+            text-transform: capitalize;
+            color: #fff;
+            padding-top: 10px;
+            padding-bottom: 10px;
+         }
+         .icon img {
+            width: 600px;
+            height: 600px;
+         }
+         .team {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            text-transform: capitalize;
+            margin: .5em auto;
+         }
+        .menu2 {
+            display: flex;
+        }
+        .menu2 img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 1em auto;
+            left: 25%;
+            position: relative;
+        }
+        .wrapper2 {
+            width: 80%;
+            margin: 2em auto;
+            justify-content: space-around;
+            align-items: center;
+            display: flex;
+        }
+        .item {
+            width: 200px;
+            height: 250px;
+            background-color: #fff;
+            border-radius: 24px;
+            box-shadow: 0 6px 10px 0;
+        }
+        .item i {
+            font-size: 70px;
+            position: relative;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .item p {
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 15px;
+            position: relative;
+            left: 50%;
+            top: 10%;
+            transform: translate(-50%,-50%);
+            font-weight: 900;
+            color: #1e59e8;
+        }
+        .item:hover {
+            transform: scale(1.02);
+            transition: all ease-in-out .1s;
+        }
+        .wrapper3 {
+            display: none;
+            margin: 1em auto;
+        }
+        .wrapper3 .item {
+            margin: 1em auto;
+        }
+        .wrapper4 {
+            display: block;
+        }
+        .wrapper4 nav {
+            margin-top: 1em;
+        }
+        .wrapper4 nav a {
+            color: #000;
+            text-transform: capitalize;
+            text-decoration: 2px solid black;
+        }
+        .wrapper4 nav a:hover {
+            transform: scale(1.01);
+        }
+        .wrapper4 p {
+            color: #000;
+        }
+        .biodata {
+            display: flex;
+            justify-content: center;
+            background-color: #1e59e8;
+        }
+        .biodata2 {
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+        }
+        .biodata3 {
+            display: flex;
+            justify-content: center;
+            background-color: #1e59e8;
+        }
+        .biodata4 {
+            display: flex;
+            justify-content: center;
+            background-color: #fff;
+        }
+        .nama {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin: auto 0;
+            width: 50%;
+            text-align: justify;
+        }
+        .nama h1 {
+            text-transform: capitalize;
+            color: #fff;
+        }
+        @media screen and (max-width: 100px) {
+            .wrapper2 {
+                width: 100%;
+            }
+        }
+        @media  screen and (max-width: 900px) {
+            .wrapper2 {
+                width: 100%;
+            }
+            .item {
+                width: 150px;
+                height: 200px;
+            }
+            .item p {
+                font-size: 20px;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .wrapper2 {
+                width: 100%;
+            }
+            .item {
+                padding-left: 1em;
+            }
+            .wrapper {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .wrapper h1 {
+                font-size: 30px;
+            }
+            .wrapper img {
+                width: 600px;
+                position: relative;
+                left: 30%;
+                top: 80%;
+                transform: translate(-50%, 10%);
+                width: 300px;
+                height: 300px;
+            }
+            .wrapper .kata {
+                position: relative;
+                left: 40%;
+                top: 100%;
+                transform: translate(-50%, -10%);
+            }
+            .banner {
+                height: fit-content;
+            }
+            .wrapper2 {
+                display: none;
+            }
+            .wrapper3 {
+                display: block;
+            }
+            .item {
+                width: 200px;
+                height: 250px;
+            }
+            .menu2 img {
+                position: relative;
+                left: 18%;
+            }
+            .menu2 p {
+                position: relative;
+                left: 45%;
+            }
+            .biodata {
+                flex-direction: column;
+                height: max-content;
+            }
+            .biodata2 {
+                flex-direction: column-reverse;
+                height: fit-content;
+            }
+            .biodata3 {
+                flex-direction: column;
+                height: fit-content;
+            }
+            .biodata4 {
+                flex-direction: column-reverse;
+                height: fit-content;
+            }
+            .wrapper4 .nama {
+                width: fit-content;
+                text-align: center;
+            }
+        }
+        @media  screen and (max-width: 414px) {
+            .wrapper .kata {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -10%);
+            }
+            .wrapper img {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-65%, 10%);
+            }
+        }
+        @media screen and (max-width: 390px) {
+            .wrapper img {
+                position: relative !important;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        @media  screen and (max-width: 375px) {
+            header {
+                width: 375px;
+            }
+            .wrapper img {
+                position: absolute;
+                top: 60% !important;
+                left: 80% !important;
+                transform: translate(-50%,-50%) !important;
+            }
+            .wrapper h1 {
+                font-size: 20px;
+            }
+            .wrapper h3 {
+                font-size: 17px;
+            }
+        }
+        @media  screen and (max-width: 400px) {
+            .banner {
+                flex-direction: column-reverse;
+            }
+            .wrapper img {
+                position: relative;
+                top: 10%;
+                left: 40%;
+                transform: translate(-50% ,-3%);
+            }
+            .wrapper .kata {
+                position: relative;
+                left: 50%;
+                top: 70%;
+                transform: translate(-50%, -10%);
+            }
+            .biodata {
+                justify-content: center;
+                height: fit-content;
+                text-align: center !important;
+            }
+            .biodata2 {
+                height: fit-content;
+            }
+            .biodata3 {
+                height: fit-content;
+            }
+            .biodata4 {
+                height: fit-content;
+            }
+        }
+        @media screen and (max-width: 320px) {
+            header {
+                z-index: 10000;
+            }
+            .icon img {
+                position: absolute !important;
+                left: 0%;
+                right: 10%;
+                width: 300px;
+                height: 300px;
+                top: 20%;
+            }
+        }
+        @media screen and (max-width: 380px) {
+            .icon {
+                width: 200px !important;
+                height: 200px !important;
+            }
+            .banner {
+                width: max-content;
+            }
+            .banner img {
+                width: 380px;
+                justify-content: start;
+                padding: 0 auto;
+                width: 300px;
+                height: 300px;
+            }
+            .kata {
+                width: 380px;
+                padding-left: 1px !important;
+                text-align: center;
+            }
+            .kata h3 {
+                font-size: 19px;
+            }
+            .kata p {
+                font-size: 15px !important;
+            }
+            .wrapper h1 {
+                font-size: 20px;
+                margin-left: 0;
+            }
+            .biodata {
+                flex-direction: column;
+                text-align: center;
+            }
+            .biodata2 {
+                flex-direction: column-reverse;
+            }
+            .biodata3 {
+                flex-direction: column;
+            }
+            .biodata4 {
+                flex-direction: column-reverse;
+            }
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #1e59e8;
+            color: #fff;
+        }
+        footer a {
+            color: #fff;
+        }
+        footer .sosmed {
+            font-size: 20px;
+        }
+        footer .sosmed:hover {
+            transform: scale(1.02);
+        }
+        footer .copyright {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Assets/favicon.png" style="height: 50px;width: 50px;">
+            <div class="firstname">tkj</div>
+            <div class="lastname">SKANSA</div>
+        </div>
+        <input type="checkbox" id="nav-check" hidden>
+        <nav>
+            <ul>
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="portfolio.html"class="active">Portfolio</a></li>
+                <li><a href="content.html">Content</a></li>
+            </ul>
+        </nav>
+        <label for="nav-check" class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </label>
+    </header>
+    <div class="banner">
+        <div class="wrapper">
+            <div class="kata">
+                <h1>hi,kami adalah XI TKJ 1</h1>
+                <h3>kami di sini untuk memperkenalkanmu<br> jurusan kami.</h3>
+                <p style="font-size: 20px; font-weight: 800;">"Satu peluru bisa melubangi satu kepala,<br>tetapi satu perkataan yang salah bisa melubangi ribuan hati"</p>
+                <p style="text-transform: capitalize; font-weight: 800;color: #fff;">-XI TKJ 1-</p>
+            </div>
+            <div class="icon">
+                <img src="Assets/icon.png" alt="">
+            </div>
+        </div>
+    </div>
+    <h1 class="team">
+        our team
+    </h1>
+    <div class="menu2">
+        <div class="wrapper2">
+            <div class="item">
+                <a href="#one">
+                    <img src="Assets/nanda1.png" alt="">
+                    <p style="color: #000;text-align: center;">nanda eldo syahputra</p>
+                    <p style="padding-top: 10px;">siswa kelas XI TKJ 1</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#two">
+                    <img src="Assets/hanif.png" alt="">
+                    <p style="color: #000;">hanif wicaksono</p>
+                    <p style="padding-top: 10px;">siswa kelas XI TKJ 1</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#three">
+                    <img src="Assets/vikri1.png" alt="">
+                    <p style="color: #000;">vikri maulana</p>
+                    <p style="padding-top: 10px;">siswa kelas XI TKJ 1</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#four">
+                    <img src="Assets/naila.png" alt="">
+                    <p style="color: #000;">naila afriani</p>
+                    <p style="padding-top: 10px;">siswi kelas XI TKJ 1</p>
+                </a>
+            </div>
+        </div>
+        <nav class="wrapper3">
+            <div class="item">
+                <a href="#one">
+                    <img src="Assets/nanda1.png" alt="">
+                    <p style="color: #000;">nanda eldo syahputra</p>
+                    <p style="padding-top: 10px;">siswa kelas XI TKJ 1</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="two">
+                    <img src="Assets/hanif.png" alt="">
+                    <p style="color: #000;">hanif wicaksono</p>
+                    <p style="padding-top: 10px;">siswa kelas XI TKJ 1</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#three">
+                    <img src="Assets/vikri1.png" alt="">
+                    <p style="color: #000;">vikri maulana</p>
+                    <p style="padding-top: 10px;">siswa kelas XI TKJ 1</p>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#four">
+                    <img src="Assets/naila.png" alt="">
+                    <p style="color: #000;">naila afriani</p>
+                    <p style="padding-top: 10px;">siswi kelas XI TKJ 1</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper4">
+        <section id="one">
+            <div class="biodata">
+                <img src="Assets/nanda2.png" alt="">
+                <div class="nama">
+                    <h1>nanda eldo syahputra</h1>
+                    <p>Halo aku adalah Nanda Eldo Syahputra. Aku adalah programmer website ini. Aku sudah belajar pemrograman website
+                        selama 3 bulan terakhir ini dan website ini adalah projek terbesarku yang pernah aku buat. Walaupun aku hanya 
+                        menggunakan HTML, dan CSS tetapi akan kupastikan bahwa website ini menjadi website terkeren yang ada di sekolahku.
+                    </p>
+                    <nav><a href="#two">next</a></nav>
+                </div>
+            </div>
+        </section>
+         <section id="two">
+            <div class="biodata2">
+                <div class="nama">
+                    <h1 style="color: #1e59e8;">hanif wicaksono</h1>
+                    <p>Halo, aku adalah Hanif Wicaksono. Tugasku dalam pengerjaan website ini adalah sebagai seorang desainer. Aku mendesain bagian 
+                        pemilihan warna sehingga website ini terlihat keren dan elegan dengan warna - warna yang sudah aku tentukan. Aku mengambil
+                        referensi warna dari baju prakter khas jurusan kami.
+                    </p>
+                    <nav>
+                        <a href="#three">next</a>
+                        <a href="#one" style="padding-left: 10px;">last</a>
+                    </nav>
+                </div>
+                <img src="Assets/hanif.png" alt="">
+            </div>
+        </section>
+        <section id="three">
+        <div class="biodata3">
+                <img src="Assets/vikri2.png" alt="">
+                <div class="nama">
+                    <h1>vikri maulana</h1>
+                    <p>Halo, aku adalah Vikri Maulana. Aku juga sebagai programmer dalam pengerjaan website ini. Aku membantu Nanda dalam pengerjaan
+                        salah satu halaman kami yang berjudul "Tentang Jurusan Teknik Komputer Dan Jaringan". Aku juga memberikan banyak ide 
+                        sehingga website ini menjadi lebih keren lagi.
+                    </p>
+                    <nav>
+                        <a href="#four">next</a>
+                        <a href="#two" style="padding-left: 10px;">last</a>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <section id="four">
+            <div class="biodata4">
+                <div class="nama">
+                    <h1 style="color: #1e59e8;">naila afriani</h1>
+                    <p>Halo, aku adalah Naila Afriani. Tugasku di sini adalah sebagai seorang photographer yang memotret foto yang ada dalam halaman portofolio ini
+                        . Aku juga membantu yang lain dalam mendesain website lebih tepatnya aku mendesain tata letak foto sehingga bakalan keliatan
+                        keren jika ditampilkan dalam website ini.
+                    </p>
+                    <nav><a href="#three">last</a></nav>
+                </div>
+                <img src="Assets/naila.png" alt="">
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="sosmed">
+            <a href="https://instagram.com/tekomik_skansa?igshid=OGY3MTU3OGY1Mw=="><i class="fa-brands fa-instagram"></i></a>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-telegram"></i>
+        </div>
+        <div class="copyright">copyright 2023 TKJ SKANSA</div>
+        </footer>
+</body>
+</html>
